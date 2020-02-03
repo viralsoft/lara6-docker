@@ -1,0 +1,5 @@
+2020/01/31 16:23:29 [warn] 6#6: *5 an upstream response is buffered to a temporary file /var/cache/nginx/fastcgi_temp/1/00/0000000001 while reading upstream, client: 172.29.0.1, server: , request: "GET /asd HTTP/1.1", upstream: "fastcgi://172.29.0.6:9000", host: "127.0.0.1:10080"
+2020/02/03 08:27:34 [error] 6#6: *2 directory index of "/work/public/" is forbidden, client: 172.18.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:10081"
+2020/02/03 08:27:42 [error] 6#6: *2 directory index of "/work/public/" is forbidden, client: 172.18.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:10081"
+2020/02/03 08:28:23 [error] 6#6: *2 directory index of "/work/public/" is forbidden, client: 172.18.0.1, server: , request: "GET / HTTP/1.1", host: "localhost:10081"
+2020/02/03 08:31:46 [error] 6#6: *6 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 172.18.0.1, server: , request: "GET /index.html HTTP/1.1", upstream: "fastcgi://172.18.0.7:9000", host: "localhost:10081"
