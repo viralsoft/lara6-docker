@@ -12,13 +12,7 @@
 */
 
 Route::get('/', function () {
-    $a = 100;
-    $b = $a + 1;
-    $c = $b + 2;
-    return $c;
     return view('welcome');
 });
-
-Route::get('/test', 'TestController@index');
 
 
