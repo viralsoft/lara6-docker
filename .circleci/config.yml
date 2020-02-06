@@ -1,0 +1,57 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: bitnami/laravel # The primary container where steps are run
+    #   - image: circleci/mysql:latest
+    #     command: [--default-authentication-plugin=mysql_native_password]
+    #     environment:
+    #       MYSQL_ROOT_PASSWORD: 123@123a
+    #       MYSQL_DATABASE: testing
+    #       MYSQL_USER: luonglit
+    #       MYSQL_PASSWORD: 123@123a
+
+    steps:
+      - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install netcat -y
+#       - run: sudo apt-get install default-mysql-client -y
+# #      - run: sudo echo "default-authentication-plugin=mysql_native_password" >> /etc/mysql/my.cnf
+#       - run:
+#           # Our primary container isn't MYSQL so run a sleep command until it's ready.
+#           name: Waiting for MySQL to be ready
+#           command: |
+#             for i in `seq 1 10`;
+#             do
+#               nc -z 127.0.0.1 3306 && echo Success && exit 0
+#               echo -n .
+#               sleep 1
+#             done
+#             echo Failed waiting for MySQL && exit 1
+      - restore_cache:
+          keys:
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: composer install -n --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
+
+      # prepare the database
+    #   - run: cp .env.testing.template .env.testing
+    #   - run: php artisan key:generate --env=testing
+    #   - run: php artisan migrate --env=testing --database=testing_mysql --force
+
+    #   # run tests with phpunit or codecept
+    #   - run: ./vendor/bin/phpunit
+    #   - run: ./vendor/bin/phpcs
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
