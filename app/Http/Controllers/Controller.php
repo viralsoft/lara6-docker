@@ -17,12 +17,12 @@ class Controller extends BaseController
     public function __construct()
     {
         $this->middleware('check_permission');
-        list(, $action) = explode('@', Route::getCurrentRoute()->getActionName());
-        $this->middleware(function() use ($action) {
-            if (method_exists($this, 'validate_'.$action)) {
-                call_user_func(array($this, 'validate_'.$action));
-            }
-        });
+//        list(, $action) = explode('@', Route::getCurrentRoute()->getActionName());
+//        $this->middleware(function() use ($action) {
+//            if (method_exists($this, 'validate_'.$action)) {
+//                call_user_func(array($this, 'validate_'.$action));
+//            }
+//        });
 
     }
 }
