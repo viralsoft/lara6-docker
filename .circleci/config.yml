@@ -33,10 +33,11 @@ jobs:
           name: Ssh add
           command: |
             ssh-add -l
+            cd ~ && ls
       - run:    
           name: Deploy
           command: |
-            ssh $SSH_USER@$SSH_HOST "cd /var/www/sites/lara6-docker && sudo git pull"
+            ssh $SSH_USER@$SSH_HOST -v "cd /var/www/sites/lara6-docker && sudo git pull"
 workflows:
   version: 2
   build-deploy:
