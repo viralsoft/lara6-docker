@@ -37,7 +37,7 @@ jobs:
       - run:    
           name: Deploy
           command: |
-            ssh $SSH_USER@$SSH_HOST -v "cd /var/www/sites/lara6-docker && sudo git pull"
+            ssh -v $SSH_USER@$SSH_HOST "cd /var/www/sites/lara6-docker && sudo git pull"
 workflows:
   version: 2
   build-deploy:
