@@ -8,16 +8,16 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install netcat -y
       - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          - v1-dependencies-
+          keys:
+            - v1-dependencies-{{ checksum "composer.json" }}
+            - v1-dependencies-
 
       - run: composer install -n --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 
       - save_cache:
-        key: v1-dependencies-{{ checksum "composer.json" }}
-        paths:
-          - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+          paths:
+            - ./vendor
   deploy:
     machine:
       enabled: true
