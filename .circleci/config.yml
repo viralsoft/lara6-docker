@@ -24,7 +24,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "cb:e7:7c:f7:1a:a6:7f:79:13:1e:75:66:0d:73:c0:3b"
+            - "69:28:e8:ec:43:d5:17:03:bf:28:f3:60:56:91:60:4a"
       - run:
           name: Setup
           command: |
@@ -33,7 +33,6 @@ jobs:
           name: Ssh add
           command: |
             ssh-add -l
-            ssh -v $SSH_USER@$SSH_HOST
       - run:    
           name: Deploy
           command: |
