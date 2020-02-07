@@ -22,6 +22,9 @@ jobs:
     machine:
       enabled: true
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "cb:e7:7c:f7:1a:a6:7f:79:13:1e:75:66:0d:73:c0:3b"
       - run:    
           name: Deploy
           command: |
