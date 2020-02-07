@@ -25,6 +25,10 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "cb:e7:7c:f7:1a:a6:7f:79:13:1e:75:66:0d:73:c0:3b"
+      - run:
+          name: Setup
+          command: |
+            ssh-keyscan 103.27.237.80 >> ~/.ssh/known_hosts
       - run:    
           name: Deploy
           command: |
