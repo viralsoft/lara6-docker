@@ -28,7 +28,11 @@ jobs:
       - run:
           name: Setup
           command: |
-            ssh-keyscan 103.27.237.80 >> ~/.ssh/known_hosts
+            ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - run:
+          name: Ssh add
+          command: |
+            ssh-add -l
       - run:    
           name: Deploy
           command: |
