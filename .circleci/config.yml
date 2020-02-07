@@ -33,7 +33,9 @@ jobs:
           name: Ssh add
           command: |
             ssh-add -l
-            cd ~ && ls
+            ssh-add -D
+            ssh-add ~/.ssh/id_rsa
+            ssh-add -l
       - run:    
           name: Deploy
           command: |
