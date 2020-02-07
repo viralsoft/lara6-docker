@@ -33,7 +33,7 @@ jobs:
           name: Ssh add
           command: |
             ssh-add -l
-            ssh -v
+            ssh -v $SSH_USER@$SSH_HOST
       - run:    
           name: Deploy
           command: |
