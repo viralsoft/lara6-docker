@@ -27,10 +27,10 @@ jobs:
 #       - add_ssh_keys:
 #           fingerprints:
 #             - "69:28:e8:ec:43:d5:17:03:bf:28:f3:60:56:91:60:4a"
-      - run:
-          name: Setup
-          command: |
-            ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+#       - run:
+#           name: Setup
+#           command: |
+#             ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
 #       - run:
 #           name: Ssh add
 #           command: |
