@@ -21,6 +21,8 @@ jobs:
   deploy:
 #     machine:
 #       enabled: true
+    docker:
+      - image: bitnami/laravel
     steps:
 #       - add_ssh_keys:
 #           fingerprints:
