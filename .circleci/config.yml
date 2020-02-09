@@ -19,8 +19,8 @@ jobs:
           paths:
             - ./vendor
   deploy:
-    machine:
-      enabled: true
+#     machine:
+#       enabled: true
     steps:
 #       - add_ssh_keys:
 #           fingerprints:
