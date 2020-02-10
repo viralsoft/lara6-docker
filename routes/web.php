@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
+
+Route::get('lang/{lang}', 'LangController@changeLang')->name('lang');
+
+Route::group([
+    'prefix' => '{locale}',
+    'where' => ['locale' => '[a-zA-Z]{2}'],
+    'middleware' => 'lang'], function() {
+    //những route muốn translate
+    Route::resource('tables', 'TableController');
+});

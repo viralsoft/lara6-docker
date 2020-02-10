@@ -15,4 +15,7 @@
         <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA"></i>
         Users
     </a>
+</li><li class="{{ Request::is('tables*') ? 'active' : '' }}">
+    <a href="{{ route('tables.index', app()->getLocale()) }}"><i class="fa fa-edit"></i><span>Tables</span></a>
 </li>
+
