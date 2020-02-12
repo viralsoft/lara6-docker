@@ -41,8 +41,12 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "ViralsPackage\\ViralsInventory\\": "packages/ViralsPackage/ViralsInventory/src/"
         },
+        "files": [
+            "packages/ViralsPackage/ViralsInventory/src/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"
@@ -50,7 +54,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "ViralsPackage\\ViralsInventory\\": "packages/ViralsPackage/ViralsInventory/src/"
         }
     },
     "minimum-stability": "dev",

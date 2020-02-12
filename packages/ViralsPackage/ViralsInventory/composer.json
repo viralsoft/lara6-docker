@@ -1,0 +1,30 @@
+{
+    "name": "virals-package/virals-inventory",
+    "description": "Inventory Management",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ViralS-longnd",
+            "email": "longnd@viralsoft.vn"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "ViralsPackage\\ViralsInventory\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "\\ViralsPackage\\ViralsInventory\\ViralsInventoryServiceProvider"
+            ]
+        }
+    }
+}

@@ -180,6 +180,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         ViralsInfyom\ViralsPermission\ViralsPermissionServiceProvider::class,
+        ViralsPackage\ViralsInventory\ViralsInventoryServiceProvider::class,
     ],
 
     /*
