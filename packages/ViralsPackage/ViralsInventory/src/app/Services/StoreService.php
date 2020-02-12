@@ -14,6 +14,11 @@ class StoreService
         $this->storeRepository = $storeRepository;
     }
 
+    public function all()
+    {
+        return $this->storeRepository->all();
+    }
+
     public function paginate($perPage)
     {
         return $this->storeRepository->paginate($perPage);
