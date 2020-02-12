@@ -1,123 +1,110 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-        </div>
-    </div>
-
-    <div class="app-page-title">
-        <div class="page-title-wrapper">
-            <div class="page-title-heading">
-                <div class="page-title-icon">
-                    <i class="pe-7s-display1">
-                    </i>
-                </div>
-                <div>STORE
-                    <div class="page-title-subheading">Store Management.
+    <section class="content-header">
+        <h1>
+            {{ __('virals-inventory::labels.store') }}
+            <small>{{ __('virals-inventory::messages.list') }}</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/home"><i class="fa fa-home"></i>{{ __('virals-inventory::messages.home') }}</a></li>
+            <li class="active">{{ __('virals-inventory::labels.store_list') }}</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="row form-group">
+                    <div class="col-sm-12 pull-right">
+                        <a href="{{ route('admin.stores.create') }}" class="btn btn-success"><i class="fa fa-edit"></i>
+                            {{ __('virals-inventory::labels.store_create') }}</a>
                     </div>
                 </div>
-            </div>
-            <div class="page-title-actions">
-                <div class="d-inline-block dropdown">
-                    <a href="{{ route('admin.stores.create') }}" type="button" class="btn btn-lg btn-info">
-                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                            <i class="fa fa-plus-circle"></i>
-                        </span>
-                        Add new
-                    </a>
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">{{ __('virals-inventory::labels.store_list') }}</h3>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="main-card mb-3 card">
-                <div class="card-body"><h5 class="card-title">Store List</h5>
-                    <div class="table-responsive">
-                        <table class="mb-0 table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Manager</th>
-                                <th>Warehouse</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Store 1</td>
-                                <td>68 Nguyễn Cơ Thạch</td>
-                                <td>Nguyễn Duy Long</td>
-                                <td>Kho 1, Kho 2</td>
-                                <td>
-                                    <a href="" class="btn btn-xs btn-primary"><i class="pe-7s-more"></i></a>
-                                    <a href="" class="btn btn-xs btn-info"><i class="pe-7s-pen"></i></a>
-                                    <form method="POST" action="" accept-charset="UTF-8" style="display: inline-block;" onsubmit="return confirm('Are you sure?');"><input name="_method" type="hidden" value="DELETE">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sx btn-danger"><i class="pe-7s-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Store 1</td>
-                                <td>68 Nguyễn Cơ Thạch</td>
-                                <td>Nguyễn Duy Long</td>
-                                <td>Kho 1, Kho 2</td>
-                                <td>
-                                    <a href="" class="btn btn-xs btn-primary"><i class="pe-7s-more"></i></a>
-                                    <a href="" class="btn btn-xs btn-info"><i class="pe-7s-pen"></i></a>
-                                    <form method="POST" action="" accept-charset="UTF-8" style="display: inline-block;" onsubmit="return confirm('Are you sure?');"><input name="_method" type="hidden" value="DELETE">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sx btn-danger"><i class="pe-7s-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Store 1</td>
-                                <td>68 Nguyễn Cơ Thạch</td>
-                                <td>Nguyễn Duy Long</td>
-                                <td>Kho 1, Kho 2</td>
-                                <td>
-                                    <a href="" class="btn btn-xs btn-primary"><i class="pe-7s-more"></i></a>
-                                    <a href="" class="btn btn-xs btn-info"><i class="pe-7s-pen"></i></a>
-                                    <form method="POST" action="" accept-charset="UTF-8" style="display: inline-block;" onsubmit="return confirm('Are you sure?');"><input name="_method" type="hidden" value="DELETE">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sx btn-danger"><i class="pe-7s-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Store 1</td>
-                                <td>68 Nguyễn Cơ Thạch</td>
-                                <td>Nguyễn Duy Long</td>
-                                <td>Kho 1, Kho 2</td>
-                                <td>
-                                    <a href="" class="btn btn-xs btn-primary"><i class="pe-7s-more"></i></a>
-                                    <a href="" class="btn btn-xs btn-info"><i class="pe-7s-pen"></i></a>
-                                    <form method="POST" action="" accept-charset="UTF-8" style="display: inline-block;" onsubmit="return confirm('Are you sure?');"><input name="_method" type="hidden" value="DELETE">
-                                        @csrf
-                                        <button type="submit" class="btn btn-sx btn-danger"><i class="pe-7s-trash"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead class="bg-primary">
+                        <tr>
+                        <tr>
+                            <th>{{ __('virals-inventory::messages.index') }}</th>
+                            <th>{{ __('virals-inventory::labels.store_name') }}</th>
+                            <th>{{ __('virals-inventory::labels.store_address') }}</th>
+                            <th>{{ __('virals-inventory::labels.store_manager') }}</th>
+                            <th>{{ __('virals-inventory::labels.store_description') }}</th>
+                            <th>{{ __('virals-inventory::messages.action') }}</th>
+                        </tr>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if($stores->count() > 0)
+                            @foreach($stores as $key => $store)
+                                <tr>
+                                    <td>{{ @($key + 1) }}</td>
+                                    <td>{{ @$store->name }}</td>
+                                    <td>{{ @$store->address }}</td>
+                                    <td>{{ @$store->manager->name }}</td>
+                                    <td>{{ @$store->descriptions }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.stores.show', $store->id) }}"
+                                           class="btn btn-xs btn-info"><i
+                                                    class="fa fa-search"></i></a>
+                                        <a href="{{ route('admin.stores.edit', $store->id) }}"
+                                           class="btn btn-xs btn-primary"><i
+                                                    class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-xs btn-danger delete_store"
+                                           data-url=""><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr><td colspan="5" class="text-center">{{ __('virals-inventory::messages.no_result') }}</td></tr>
+                        @endif
+                        </tbody>
+                    </table>
+                    <div class="row mbm">
+                        <div class="col-sm-6">
+                            <span class="record-total">{{ __('virals-inventory::messages.show') }} {{ $stores->count() }} / {{ $stores->total() }} {{ __('virals-inventory::messages.result') }}</span>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="pagination-panel pull-right">
+                                {{ $stores->appends(request()->input())->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+@endsection
+@section('scripts')
+    <script>
+        var request = false;
+        $(document).on('click', 'a.delete_store', function (e) {
+            if (!confirm('{{ __('virals-inventory::messages.delete_message') }}')) {
+                e.preventDefault();
+            } else {
+                $.ajax({
+                    url: $(this).attr('data-url'),
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "_method": "DELETE"
+                    },
+                    success: function (response) {
+                        location.reload()
+                    }
+                })
+            }
+
+        });
+    </script>
 @endsection

@@ -27,6 +27,8 @@ class ViralsInventoryServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/resources/views', 'virals-inventory');
 
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'virals-inventory');
+
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->publishesFile();
