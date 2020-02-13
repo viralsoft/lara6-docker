@@ -10,7 +10,12 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
     "autoload": {
         "psr-4": {
             "ViralsPackage\\ViralsInventory\\": "src/"
@@ -19,12 +24,22 @@
             "src/helpers.php"
         ]
     },
-
+    "autoload-dev": {
+        "psr-4": {
+            "ViralsPackage\\ViralsInventory\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
     "extra": {
         "laravel": {
             "providers": [
                 "\\ViralsPackage\\ViralsInventory\\ViralsInventoryServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.0"
     }
 }

@@ -55,7 +55,8 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/",
-            "ViralsPackage\\ViralsInventory\\": "packages/ViralsPackage/ViralsInventory/src/"
+            "ViralsPackage\\ViralsInventory\\": "packages/ViralsPackage/ViralsInventory/src/",
+            "ViralsPackage\\ViralsInventory\\Tests\\":  "packages/ViralsPackage/ViralsInventory/tests/"
         }
     },
     "minimum-stability": "dev",
