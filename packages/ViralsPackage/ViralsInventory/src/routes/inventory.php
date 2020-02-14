@@ -57,4 +57,12 @@ Route::group(
         Route::get('units/{store}', 'Admin\UnitController@show')->name('admin.units.show');
         Route::get('units/{store}/edit', 'Admin\UnitController@edit')->name('admin.units.edit');
         Route::put('units/{store}', 'Admin\UnitController@update')->name('admin.units.update');
+
+        // Vendor Routes...
+        Route::get('vendors', 'Admin\VendorController@index')->name('admin.vendors.index');
+        Route::get('vendors/create', 'Admin\VendorController@create')->name('admin.vendors.create');
+        Route::post('vendors', 'Admin\VendorController@store')->name('admin.vendors.store');
+        Route::get('vendors/{store}', 'Admin\VendorController@show')->name('admin.vendors.show');
+        Route::get('vendors/{store}/edit', 'Admin\VendorController@edit')->name('admin.vendors.edit');
+        Route::put('vendors/{store}', 'Admin\VendorController@update')->name('admin.vendors.update');
     });
