@@ -14,24 +14,25 @@ Route::group(
     [
         'namespace'  => 'ViralsPackage\ViralsInventory\app\Http\Controllers',
         'middleware' => 'web',
-        'prefix'     => 'admin'
+        'prefix'     => 'admin',
+        'as' => 'admin.'
     ],
     function () {
         // Store Routes...
-        Route::resource('admin.stores', 'Admin\StoreController');
+        Route::resource('stores', 'Admin\StoreController');
 
         // Warehouse Routes...
-        Route::resource('admin.warehouses', 'Admin\WarehouseController');
+        Route::resource('warehouses', 'Admin\WarehouseController');
 
         // Import Route
-        Route::resource('admin.imports', 'Admin\ImportController');
+        Route::resource('imports', 'Admin\ImportController');
 
         // Product Route
-        Route::resource('admin.products', 'Admin\ProductController');
+        Route::resource('products', 'Admin\ProductController');
 
         // Unit Routes...
-        Route::resource('admin.units', 'Admin\UnitController');
+        Route::resource('units', 'Admin\UnitController');
 
         // Vendor Routes...
-        Route::resource('admin.vendors', 'Admin\UnitController');
+        Route::resource('vendors', 'Admin\UnitController');
     });
