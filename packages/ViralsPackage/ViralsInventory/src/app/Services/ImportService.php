@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ViralsPackage\ViralsInventory\app\Services;
 
 use ViralsPackage\ViralsInventory\app\Repositories\ImportRepository;
