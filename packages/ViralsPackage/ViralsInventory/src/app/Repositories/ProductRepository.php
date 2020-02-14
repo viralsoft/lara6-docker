@@ -3,14 +3,14 @@
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
 use App\Repositories\BaseRepository;
-use ViralsPackage\ViralsInventory\app\Models\Store;
+use ViralsPackage\ViralsInventory\app\Models\Product;
 
-class StoreRepository extends BaseRepository
+class ProductRepository extends BaseRepository
 {
     /**
      * @var array
      */
-    protected $fieldSearchable = ['name', 'address', 'descriptions', 'manager_id', 'status', 'created_by', 'updated_by'];
+    protected $fieldSearchable = ['sku', 'name', 'unit_id', 'created_by', 'updated_by'];
 
     /**
      * Return searchable fields
@@ -27,6 +27,6 @@ class StoreRepository extends BaseRepository
      **/
     public function model()
     {
-        return Store::class;
+        return Product::class;
     }
 }

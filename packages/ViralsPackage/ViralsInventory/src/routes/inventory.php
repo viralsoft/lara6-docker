@@ -32,4 +32,20 @@ Route::group(
         Route::get('warehouses/{store}', 'Admin\WarehouseController@show')->name('admin.warehouses.show');
         Route::get('warehouses/{store}/edit', 'Admin\WarehouseController@edit')->name('admin.warehouses.edit');
         Route::put('warehouses/{store}', 'Admin\WarehouseController@update')->name('admin.warehouses.update');
+
+        // Import Route
+        Route::get('imports', 'Admin\ImportController@index')->name('admin.imports.index');
+        Route::get('imports/create', 'Admin\ImportController@create')->name('admin.imports.create');
+        Route::post('imports', 'Admin\ImportController@store')->name('admin.imports.store');
+        Route::get('imports/{id}', 'Admin\ImportController@show')->name('admin.imports.show');
+        Route::get('imports/{id}/edit', 'Admin\ImportController@edit')->name('admin.imports.edit');
+        Route::put('imports/{id}', 'Admin\ImportController@update')->name('admin.imports.update');
+
+        // Product Route
+        Route::get('products', 'Admin\ProductController@index')->name('admin.products.index');
+        Route::get('products/create', 'Admin\ProductController@create')->name('admin.products.create');
+        Route::post('products', 'Admin\ProductController@store')->name('admin.products.store');
+        Route::get('products/{id}', 'Admin\ProductController@show')->name('admin.products.show');
+        Route::get('products/{id}/edit', 'Admin\ProductController@edit')->name('admin.products.edit');
+        Route::put('products/{id}', 'Admin\ProductController@update')->name('admin.products.update');
     });
