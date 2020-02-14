@@ -72,7 +72,7 @@ abstract class BaseRepository
     {
         $query = $this->allQuery();
 
-        return $query->paginate($perPage, $columns);
+        return $query->orderBy('updated_at', 'desc')->paginate($perPage, $columns);
     }
 
     /**
