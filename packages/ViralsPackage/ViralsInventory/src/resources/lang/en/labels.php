@@ -24,7 +24,27 @@ return [
     'warehouse_address' => 'Warehouse Address',
     'warehouse_update' => 'Edit Warehouse',
     'warehouse_show' => 'Show Warehouse',
-
+    'import' => 'Import',
+    'import_list' => 'Import List',
+    'import_create' => 'Create Import',
+    'import_update' => 'Update Import',
+    'import_field' => [
+        'product_id' => 'Product',
+        'warehouse_id' => 'Warehouse',
+        'vendor_id' => 'Vendor',
+        'quantity' => 'Quantity',
+        'date' => 'Date'
+    ],
+    'product' => 'Product',
+    'product_list' => 'Product List',
+    'product_create' => 'Create Product',
+    'product_update' => 'Update Product',
+    'product_show' => 'Show Product',
+    'product_field' => [
+        'sku' => 'Sku',
+        'name' => 'Name',
+        'unit_id' => 'Unit'
+    ],
     //Unit of measure
     'unit' => 'Unit of measure',
     'unit_list' => 'List Unit of measure',
