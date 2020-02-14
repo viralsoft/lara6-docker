@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                 @endif
-                {!! Form::open(['url' =>[ $route ] , 'method'=> 'POST','files' => true]) !!}
+                {!! Form::open(['url' =>[ $route ] , 'method'=> @$product ? 'PUT' : 'POST', 'files' => true]) !!}
                 <div class="form-group">
                     {!! Form::label('name', __('virals-inventory::labels.product_field.name')) !!}
                     {!! Form::text('name', old('name') ?? @$product->name , ['class' => 'form-control', 'placeholder' => __('virals-inventory::labels.product_field.name')]) !!}

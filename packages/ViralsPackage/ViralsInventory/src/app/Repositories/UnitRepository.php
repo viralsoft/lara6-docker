@@ -2,6 +2,7 @@
 
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
+
 use App\Repositories\BaseRepository;
 use ViralsPackage\ViralsInventory\app\Models\Unit;
 

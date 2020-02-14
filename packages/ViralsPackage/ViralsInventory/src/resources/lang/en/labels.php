@@ -1,6 +1,7 @@
 <?php
 
 return [
+    //store
     'store' => 'Store',
     'store_list' => 'List Store',
     'store_create' => 'Create Store',
@@ -12,12 +13,13 @@ return [
     'store_show' => 'Show Store',
     'created_by' => 'Created by',
     'updated_by' => 'Updated by',
+
+    //warehouse
     'warehouse' => 'Warehouse',
     'warehouse_list' => 'List Warehouse',
     'warehouse_create' => 'Create Warehouse',
     'warehouse_name' => 'Warehouse Name',
     'warehouse_address' => 'Warehouse Address',
-    'warehouse_manager' => 'Manager',
     'warehouse_update' => 'Edit Warehouse',
     'warehouse_show' => 'Show Warehouse',
     'import' => 'Import',
@@ -41,4 +43,11 @@ return [
         'name' => 'Name',
         'unit_id' => 'Unit'
     ],
+    //Unit of measure
+    'unit' => 'Unit of measure',
+    'unit_list' => 'List Unit of measure',
+    'unit_create' => 'Create Unit of measure',
+    'unit_name' => 'Unit Name',
+    'unit_update' => 'Edit Unit of measure',
+    'unit_show' => 'Show Unit of measure',
 ];

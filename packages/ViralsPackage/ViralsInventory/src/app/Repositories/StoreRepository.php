@@ -2,7 +2,6 @@
 
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
-use App\Repositories\BaseRepository;
 use ViralsPackage\ViralsInventory\app\Models\Store;
 
 class StoreRepository extends BaseRepository
