@@ -11,6 +11,10 @@
     ],
     "minimum-stability": "dev",
     "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "8.0",
+        "orchestra/testbench": "^4.0"
+    },
     "autoload": {
         "psr-4": {
             "ViralsPackage\\ViralsInventory\\": "src/"
@@ -33,8 +37,5 @@
                 "\\ViralsPackage\\ViralsInventory\\ViralsInventoryServiceProvider"
             ]
         }
-    },
-    "require-dev": {
-        "phpunit/phpunit": "8.0"
     }
 }
