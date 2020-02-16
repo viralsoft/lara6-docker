@@ -28,4 +28,14 @@ class WarehouseRepository extends BaseRepository
     {
         return Warehouse::class;
     }
+
+    public function createProduct($warehouse, $productId, $dataQuantity)
+    {
+        return $warehouse->products()->attach($productId, $dataQuantity);
+    }
+
+    public function updateProduct($warehouse, $productId, $dataQuantity)
+    {
+        return $warehouse->products()->updateExistingPivot($productId, $dataQuantity);
+    }
 }

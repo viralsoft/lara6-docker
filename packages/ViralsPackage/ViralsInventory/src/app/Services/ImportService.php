@@ -2,38 +2,61 @@
 
 namespace ViralsPackage\ViralsInventory\app\Services;
 
+use ViralsPackage\ViralsInventory\app\Models\Warehouse;
 use ViralsPackage\ViralsInventory\app\Repositories\ImportRepository;
-use ViralsPackage\ViralsInventory\app\Repositories\WarehouseRepository;
-use ViralsPackage\ViralsInventory\app\Repositories\ProductRepository;
-use ViralsPackage\ViralsInventory\app\Repositories\VendorRepository;
+use ViralsPackage\ViralsInventory\app\Services\WarehouseService;
+use ViralsPackage\ViralsInventory\app\Services\ProductService;
+use ViralsPackage\ViralsInventory\app\Services\VendorService;
 
 class ImportService
 {
     protected $importRepository;
-    protected $warehouseRepository;
-    protected $productRepository;
-    protected $vendorRepository;
+    protected $warehouseService;
+    protected $productService;
+    protected $vendorService;
 
     public function __construct(
         ImportRepository $importRepository,
-        WarehouseRepository $warehouseRepository,
-        ProductRepository $productRepository,
-        VendorRepository $vendorRepository
-    ) {
+        WarehouseService $warehouseService,
+        ProductService $productService,
+        VendorService $vendorService
+    )
+    {
         $this->importRepository = $importRepository;
-        $this->warehouseRepository = $warehouseRepository;
-        $this->productRepository = $productRepository;
-        $this->vendorRepository = $vendorRepository;
+        $this->warehouseService = $warehouseService;
+        $this->productService = $productService;
+        $this->vendorService = $vendorService;
     }
 
     public function paginate($perPage)
     {
-        return $this->importRepository->with(['product', 'warehouse', 'vendor'])->paginate($perPage);
+        return $this->importRepository->with(['warehouse', 'vendor'])->paginate($perPage);
+    }
+
+    public function findOrFail($id)
+    {
+        $store = $this->importRepository->find($id);
+        if (!$store) {
+            return abort('404');
+        }
+        return $store;
     }
 
     public function create($data)
     {
-        return $this->importRepository->create($data);
+        \DB::beginTransaction();
+        try {
+            $import = $this->importRepository->create($data);
+            $dataProduct = $this->getProductAndQuantity($data);
+            foreach ($data['product_id'] as $key => $value) {
+                $import->products()->attach($value, ['quantity' => $data['quantity'][$key]]);
+            }
+            $this->warehouseService->updateOrCreateProduct($data, $dataProduct);
+            \DB::commit();
+            return $import;
+        } catch (\Exception $e) {
+            \DB::rollback();
+        }
     }
 
     public function update($data, $id)
@@ -44,10 +67,27 @@ class ImportService
     public function setupCreateData()
     {
         $data = [];
-        $data['product'] = $this->productRepository->all()->pluck('name', 'id')->toArray();
-        $data['warehouse'] = $this->warehouseRepository->all()->pluck('name', 'id')->toArray();
-        $data['vendor'] = $this->vendorRepository->all()->pluck('name', 'id')->toArray();
+        $products = $this->productService->all();
+        $products->load('unit');
+        $data['products'] = $products;
+        $data['warehouses'] = $this->warehouseService->all()->pluck('name', 'id')->toArray();
+        $data['vendors'] = $this->vendorService->all()->pluck('name', 'id')->toArray();
 
         return $data;
+    }
+
+    private function getProductAndQuantity($data)
+    {
+        $dataImport = [];
+        foreach ($data['product_id'] as $key => $value)
+        {
+            if (array_key_exists($value, $dataImport)) {
+                $quantity = $dataImport[$value]['quantity'] + $data['quantity'][$key];
+                $dataImport[$value] = ['quantity' => $quantity];
+            } else {
+                $dataImport[$value] = ['quantity' => $data['quantity'][$key]];
+            }
+        }
+        return $dataImport;
     }
 }

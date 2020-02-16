@@ -78,6 +78,7 @@ class WarehouseController extends Controller
     public function show($id)
     {
         $warehouse = $this->warehouseService->findOrFail($id);
+        $warehouse->load('imports', 'products', 'createdBy', 'updatedBy');
         return view('virals-inventory::warehouses.show', compact('warehouse'));
     }
 }

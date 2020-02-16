@@ -9,11 +9,11 @@ class Import extends Model
 {
     protected $table = 'imports';
 
-    protected $fillable = ['product_id', 'warehouse_id', 'vendor_id', 'quantity', 'date', 'created_by', 'updated_by'];
+    protected $fillable = ['warehouse_id', 'vendor_id', 'date', 'created_by', 'updated_by'];
 
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class, 'product_id');
+        return $this->belongsToMany(Product::class, 'import_product', 'import_id', 'product_id')->withPivot('quantity');;
     }
 
     public function warehouse()
@@ -23,7 +23,7 @@ class Import extends Model
 
     public function vendor()
     {
-        return $this->belongsTo(Vendor::class, 'warehouse_id');
+        return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 
     public function createdBy()
@@ -35,6 +35,4 @@ class Import extends Model
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
-
-
 }
