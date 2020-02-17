@@ -53,9 +53,10 @@ class ImportService
             }
             $this->warehouseService->updateOrCreateProduct($data, $dataProduct);
             \DB::commit();
-            return $import;
+            return true;
         } catch (\Exception $e) {
             \DB::rollback();
+            return false;
         }
     }
 
