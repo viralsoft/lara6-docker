@@ -18,7 +18,7 @@ class CreateImportsTable extends Migration
             $table->integer('warehouse_id');
             $table->integer('vendor_id');
             $table->dateTime('date');
-            $table->string('status')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

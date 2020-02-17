@@ -17,7 +17,7 @@ class CreateExportsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('warehouse_id');
             $table->dateTime('date');
-            $table->string('status')->default(1);
+            $table->tinyInteger('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

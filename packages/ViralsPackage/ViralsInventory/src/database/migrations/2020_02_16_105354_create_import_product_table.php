@@ -16,7 +16,7 @@ class CreateImportProductTable extends Migration
         Schema::create('import_product', function (Blueprint $table) {
             $table->bigInteger('import_id');
             $table->bigInteger('product_id');
-            $table->string('quantity');
+            $table->float('quantity');
         });
     }
 

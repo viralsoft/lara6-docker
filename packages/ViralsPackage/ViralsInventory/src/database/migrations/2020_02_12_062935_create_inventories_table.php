@@ -16,7 +16,7 @@ class CreateInventoriesTable extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->bigInteger('warehouse_id');
             $table->bigInteger('product_id');
-            $table->string('quantity');
+            $table->float('quantity');
         });
     }
 

@@ -16,7 +16,7 @@ class CreateExportProductTable extends Migration
         Schema::create('export_product', function (Blueprint $table) {
             $table->bigInteger('export_id');
             $table->bigInteger('product_id');
-            $table->string('quantity');
+            $table->float('quantity');
         });
     }
 
