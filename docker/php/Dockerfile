@@ -33,10 +33,13 @@ RUN apk update && \
   pecl install xdebug && \
   git clone https://github.com/phpredis/phpredis.git /usr/src/php/ext/redis && \
   apk del .build-dependencies && \
-  docker-php-ext-install intl pdo_mysql gd mbstring zip bcmath redis && \
+  docker-php-ext-install intl iconv pdo_mysql gd mbstring zip bcmath redis && \
   docker-php-ext-enable xdebug && \
   mkdir $PSYSH_DIR && curl $PHP_MANUAL_URL -o $PSYSH_PHP_MANUAL && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
+
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ --allow-untrusted gnu-libiconv
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php

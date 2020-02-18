@@ -7,7 +7,7 @@ use ViralsPackage\ViralsInventory\app\Http\Controllers\Controller;
 use ViralsPackage\ViralsInventory\app\Http\Requests\CreateImportRequest;
 use ViralsPackage\ViralsInventory\app\Services\ImportService;
 use ViralsPackage\ViralsInventory\app\Services\ProductService;
-use Dompdf\Dompdf;
+use PDF;
 
 class ImportController extends Controller
 {
