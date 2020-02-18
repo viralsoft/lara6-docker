@@ -51,7 +51,7 @@
                                         <a href="{{ route('admin.imports.show', $import->id) }}"
                                            class="btn btn-xs btn-info"><i
                                                     class="fa fa-search"></i></a>
-                                        <a class="btn btn-xs btn-danger delete_warehouse"
+                                        <a href="{{ route('admin.imports.pdf', $import->id) }}" class="btn btn-xs btn-danger delete_warehouse"
                                            data-url=""><i class="fa fa-download"></i></a>
                                     </td>
                                 </tr>
