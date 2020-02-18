@@ -13,5 +13,9 @@ return [
     'action' => 'Action',
     'no_result' => 'No Result',
     'show' => 'Show',
-    'result' => 'results'
+    'result' => 'results',
+    // Validate
+    'validation' => [
+        'not_enough_product_in_warehouse' => "The product in warehouse not enough quantity."
+    ]
 ];

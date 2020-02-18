@@ -27,7 +27,7 @@ Route::group(
         // Import Route
         Route::resource('imports', 'Admin\ImportController')->only([
             'index', 'show', 'create', 'store'
-        ]);;
+        ]);
         Route::get('imports/pdf/{import}', 'Admin\ImportController@exportPdf')->name('imports.pdf');
 
         // Product Route
@@ -38,4 +38,11 @@ Route::group(
 
         // Vendor Routes...
         Route::resource('vendors', 'Admin\VendorController');
+
+        // Export Routes...
+        Route::resource('exports', 'Admin\ExportController')->only([
+            'index', 'show', 'create', 'store'
+        ]);
+        Route::get('exports/pdf/{import}', 'Admin\ExportController@exportPdf')->name('exports.pdf');
+
     });
