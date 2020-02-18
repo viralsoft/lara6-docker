@@ -15,10 +15,9 @@ class CreateExportsTable extends Migration
     {
         Schema::create('exports', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id');
             $table->integer('warehouse_id');
-            $table->integer('quantity');
             $table->dateTime('date');
+            $table->tinyInteger('status')->default(1);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

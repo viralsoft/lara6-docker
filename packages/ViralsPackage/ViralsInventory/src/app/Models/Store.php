@@ -16,6 +16,11 @@ class Store extends Model
         return $this->belongsTo(User::class, 'manager_id');
     }
 
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

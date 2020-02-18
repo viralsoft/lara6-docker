@@ -25,4 +25,14 @@ class Warehouse extends Model
     {
         return $this->belongsTo(Store::class, 'store_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'inventories', 'warehouse_id', 'product_id')->withPivot('quantity');
+    }
+
+    public function imports()
+    {
+        return $this->hasMany(Import::class);
+    }
 }
