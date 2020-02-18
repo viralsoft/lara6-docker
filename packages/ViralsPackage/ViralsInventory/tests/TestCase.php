@@ -3,7 +3,7 @@
 
 namespace ViralsPackage\ViralsInventory\Tests;
 
-use App\User;
+use ViralsPackage\ViralsInventory\app\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use ViralsPackage\ViralsInventory\ViralsInventoryServiceProvider;
 use Faker\Factory as Faker;

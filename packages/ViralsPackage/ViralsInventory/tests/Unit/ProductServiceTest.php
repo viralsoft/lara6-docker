@@ -11,14 +11,8 @@ use ViralsPackage\ViralsInventory\Tests\TestCase;
 
 class ProductServiceTest extends TestCase
 {
-    public function test_it_can_create_an_unit()
+    public function test_can_not_create_without_name()
     {
-        $service = $this->app->make(ProductService::class);
-        $this->assertInstanceOf(LengthAwarePaginator::class, $service->paginate(10));
-    }
-
-   public function test_can_not_create_without_name()
-   {
         $arr = [
             'sku' => 'test sku',
             'name' => null,
@@ -28,10 +22,10 @@ class ProductServiceTest extends TestCase
         $response = $this->followingRedirects()->actingAs($user)->post('/admin/products', $arr);
         $response->assertViewIs('virals-inventory::products.form');
         $response->assertSee('The name field is required.');
-   }
+    }
 
-   public function test_can_not_create_without_sku()
-   {
+    public function test_can_not_create_without_sku()
+    {
         $arr = [
             'sku' => null,
             'name' => 'test name',
@@ -43,10 +37,10 @@ class ProductServiceTest extends TestCase
 
         $response->assertViewIs('virals-inventory::products.form');
         $response->assertSee('The sku field is required.');
-   }
+    }
 
-   public function test_can_not_create_without_unit_id()
-   {
+    public function test_can_not_create_without_unit_id()
+    {
         $arr = [
             'sku' => 'test sku',
             'name' => 'test name',
@@ -58,9 +52,9 @@ class ProductServiceTest extends TestCase
 
        $response->assertViewIs('virals-inventory::products.form');
        $response->assertSee('is required');
-   }
+    }
 
-   public function test_can_not_update_without_name()
+    public function test_can_not_update_without_name()
    {
        $product = Product::first();
        $user = $this->setupFakeDatabase();
