@@ -18,6 +18,11 @@ class ProductService
         $this->unitRepository = $unitRepository;
     }
 
+    public function all()
+    {
+        return $this->productRepository->all();
+    }
+
     public function paginate($perPage)
     {
         return $this->productRepository->paginate($perPage);

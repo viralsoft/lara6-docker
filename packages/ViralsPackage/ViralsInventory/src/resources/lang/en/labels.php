@@ -24,16 +24,19 @@ return [
     'warehouse_address' => 'Warehouse Address',
     'warehouse_update' => 'Edit Warehouse',
     'warehouse_show' => 'Show Warehouse',
-    'import' => 'Import',
-    'import_list' => 'Import List',
-    'import_create' => 'Create Import',
-    'import_update' => 'Update Import',
-    'import_field' => [
+    'imports' => 'Import',
+    'imports_list' => 'Import List',
+    'imports_create' => 'Create Import',
+    'imports_update' => 'Update Import',
+    'imports_show' => 'Import Show',
+    'imports_field' => [
         'product_id' => 'Product',
         'warehouse_id' => 'Warehouse',
         'vendor_id' => 'Vendor',
         'quantity' => 'Quantity',
-        'date' => 'Date'
+        'date' => 'Date',
+        'pdf' => 'Generate PDF',
+        'export' => 'Export',
     ],
     'product' => 'Product',
     'product_list' => 'Product List',
@@ -45,6 +48,8 @@ return [
         'name' => 'Name',
         'unit_id' => 'Unit'
     ],
+    'product_history' => 'History imports',
+    'product_add' => 'Add more product',
     //Unit of measure
     'unit' => 'Unit of measure',
     'unit_list' => 'List Unit of measure',

@@ -14,6 +14,11 @@ class WarehouseService
         $this->warehouseRepository = $warehouseRepository;
     }
 
+    public function all()
+    {
+        return $this->warehouseRepository->all();
+    }
+
     public function paginate($perPage)
     {
         return $this->warehouseRepository->paginate($perPage);
@@ -36,5 +41,20 @@ class WarehouseService
     public function update($data, $id)
     {
         return $this->warehouseRepository->update($data, $id);
+    }
+
+    public function updateOrCreateProduct($data, $dataProduct)
+    {
+        $warehouse = $this->findOrFail($data['warehouse_id']);
+        $warehouse->load('products');
+        foreach ($dataProduct as $key => $value) {
+            $product = $warehouse->products()->where('id', $key)->first();
+            if (!$product) {
+                return $this->warehouseRepository->createProduct($warehouse, $key, $value);
+            } else {
+                $value['quantity'] = $value['quantity'] + $product->pivot->quantity;
+                return $this->warehouseRepository->updateProduct($warehouse, $key, $value);
+            }
+        }
     }
 }

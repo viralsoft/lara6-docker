@@ -4,21 +4,24 @@ namespace ViralsPackage\ViralsInventory\app\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\Auth;
 use ViralsPackage\ViralsInventory\app\Http\Controllers\Controller;
-use ViralsPackage\ViralsInventory\app\Http\Requests\CreateWarehouseRequest;
-use ViralsPackage\ViralsInventory\app\Http\Requests\UpdateWarehouseRequest;
+use ViralsPackage\ViralsInventory\app\Http\Requests\CreateImportRequest;
 use ViralsPackage\ViralsInventory\app\Services\ImportService;
+use ViralsPackage\ViralsInventory\app\Services\ProductService;
+use PDF;
 
 class ImportController extends Controller
 {
     protected $importService; // the information we send to the view
+    protected $productService; // the information we send to the view
 
     /**
      * Create a new controller instance.
      */
-    public function __construct(ImportService $importService)
+    public function __construct(ImportService $importService, ProductService $productService)
     {
         $this->middleware('auth');
         $this->importService = $importService;
+        $this->productService = $productService;
     }
 
     /**
@@ -40,41 +43,33 @@ class ImportController extends Controller
     public function create()
     {
         $data = $this->importService->setupCreateData();
-        return view('virals-inventory::imports.create', compact('data'));
+        return view('virals-inventory::imports.create', $data);
     }
 
-    public function store(CreateWarehouseRequest $request)
+    public function store(CreateImportRequest $request)
     {
         $request->merge(['created_by' => Auth::id()]);
-        $warehouse = $this->warehouseService->create($request->except('_token'));
+        $request->merge(['date' => date('Y-m-d H:i:s', strtotime($request->date))]);
+        $warehouse = $this->importService->create($request->except('_token'));
         return redirect()
-            ->route('admin.warehouses.index')
+            ->route('admin.imports.index')
             ->with('success', __('virals-inventory::messages.create_message',
-                ['model' => __('virals-inventory::labels.warehouse')]
-            ));
-    }
-
-    public function edit($id)
-    {
-        $import = $this->importService->findOrFail($id);
-        $data = $this->importService->setupCreateData();
-        return view('virals-inventory::imports.create', compact('data', 'import'));
-    }
-
-    public function update(UpdateWarehouseRequest $request, $id)
-    {
-        $request->merge(['updated_by' => Auth::id()]);
-        $warehouse = $this->warehouseService->update($request->except('_token'), $id);
-        return redirect()
-            ->route('admin.warehouses.index')
-            ->with('success', __('virals-inventory::messages.update_message',
-                ['model' => __('virals-inventory::labels.warehouse')]
+                ['model' => __('virals-inventory::labels.imports')]
             ));
     }
 
     public function show($id)
     {
-        $data = $this->setupCreateData->findOrFail($id);
-        return view('virals-inventory::warehouses.show', compact('warehouse'));
+        $import = $this->importService->findOrFail($id);
+        $import->load('products', 'createdBy', 'updatedBy', 'vendor', 'warehouse');
+        return view('virals-inventory::imports.show', compact('import'));
+    }
+
+    public function exportPdf($id)
+    {
+        $import = $this->importService->findOrFail($id);
+        $import->load('products', 'createdBy', 'updatedBy', 'vendor', 'warehouse');
+        $pdf = PDF::loadView('virals-inventory::imports.pdf', compact('import'));
+        return $pdf->download('import.pdf');
     }
 }

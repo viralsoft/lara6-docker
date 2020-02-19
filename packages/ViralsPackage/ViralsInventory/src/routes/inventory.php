@@ -25,7 +25,10 @@ Route::group(
         Route::resource('warehouses', 'Admin\WarehouseController');
 
         // Import Route
-        Route::resource('imports', 'Admin\ImportController');
+        Route::resource('imports', 'Admin\ImportController')->only([
+            'index', 'show', 'create', 'store'
+        ]);;
+        Route::get('imports/pdf/{import}', 'Admin\ImportController@exportPdf')->name('imports.pdf');
 
         // Product Route
         Route::resource('products', 'Admin\ProductController');
@@ -34,5 +37,5 @@ Route::group(
         Route::resource('units', 'Admin\UnitController');
 
         // Vendor Routes...
-        Route::resource('vendors', 'Admin\UnitController');
+        Route::resource('vendors', 'Admin\VendorController');
     });

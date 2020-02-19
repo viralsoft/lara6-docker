@@ -31,6 +31,15 @@ class ViralsInventoryServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
+        $this->mergeConfigFrom(
+            __DIR__.'/config/app.php',
+            'app.providers'
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/config/alias.php',
+            'app.aliases'
+        );
+
         $this->publishesFile();
     }
 
