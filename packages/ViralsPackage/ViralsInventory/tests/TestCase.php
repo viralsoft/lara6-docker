@@ -3,7 +3,7 @@
 
 namespace ViralsPackage\ViralsInventory\Tests;
 
-use ViralsPackage\ViralsInventory\app\Models\User;
+use ViralsInfyom\ViralsBase\app\Models\UserViral;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use ViralsPackage\ViralsInventory\ViralsInventoryServiceProvider;
 use Faker\Factory as Faker;
@@ -29,7 +29,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
     public function setupFakeDatabase()
     {
-        $user = User::create([
+        $user = UserViral::create([
             [
                 'name'  => 'hungtd',
                 'email' => 'hungtd@viralsoft.vn',
@@ -38,7 +38,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
                 'updated_at'    => Carbon::now()
             ]
         ]);
-        
+
         return $user;
     }
 }
