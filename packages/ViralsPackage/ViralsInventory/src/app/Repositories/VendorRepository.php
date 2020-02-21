@@ -3,6 +3,7 @@
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
 use ViralsPackage\ViralsInventory\app\Models\Vendor;
+use ViralsPackage\ViralsInventory\app\Repositories\BaseRepository;
 
 class VendorRepository extends BaseRepository
 {

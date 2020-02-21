@@ -2,9 +2,9 @@
 
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
-use App\Repositories\BaseRepository;
 use ViralsPackage\ViralsInventory\app\Models\Import;
-use ViralsPackage\ViralsInventory\app\Models\Store;
+use ViralsPackage\ViralsInventory\app\Repositories\BaseRepository;
+
 
 class ImportRepository extends BaseRepository
 {

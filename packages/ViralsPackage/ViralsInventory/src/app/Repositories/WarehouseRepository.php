@@ -3,6 +3,7 @@
 namespace ViralsPackage\ViralsInventory\app\Repositories;
 
 use ViralsPackage\ViralsInventory\app\Models\Warehouse;
+use ViralsPackage\ViralsInventory\app\Repositories\BaseRepository;
 
 class WarehouseRepository extends BaseRepository
 {

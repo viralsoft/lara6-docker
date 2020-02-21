@@ -30,7 +30,12 @@ class ImportService
 
     public function paginate($perPage)
     {
-        return $this->importRepository->with(['warehouse', 'vendor'])->paginate($perPage);
+        return $this->importRepository->paginate($perPage);
+    }
+
+    public function all()
+    {
+        return $this->importRepository->all();
     }
 
     public function findOrFail($id)
@@ -53,16 +58,11 @@ class ImportService
             }
             $this->warehouseService->updateOrCreateProduct($data, $dataProduct);
             \DB::commit();
-            return true;
+            return $import;
         } catch (\Exception $e) {
             \DB::rollback();
             return false;
         }
-    }
-
-    public function update($data, $id)
-    {
-        return $this->importRepository->update($data, $id);
     }
 
     public function setupCreateData()

@@ -19,6 +19,11 @@ class UnitService
         return $this->unitRepository->paginate($perPage);
     }
 
+    public function all()
+    {
+        return $this->unitRepository->all();
+    }
+
     public function create($data)
     {
         return $this->unitRepository->create($data);
