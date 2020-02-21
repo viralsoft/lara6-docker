@@ -51,5 +51,19 @@ return [
         ' poc_phone' => 'POC Phone',
         ' update' => 'Sửa Nhà cung cấp',
         ' show' => 'Chi tiết Nhà cung cấp'
+    ],
+
+    //Xuất hàng
+    'export' => [
+        'index' =>'Xuất hàng',
+        'list' => 'Danh sách Xuất hàng',
+        'create' => 'Xuất hàng',
+        'product_name' => 'Tên Sản phẩm',
+        'warehouse_name' => 'Tên kho',
+        'quantity' => 'Số lương',
+        'date' => 'Ngày Xuất hàng',
+        'update' => 'Sửa Xuất hàng',
+        'show' => 'Chi tiết Xuất hàng',
+        'pdf' => 'Xuất PDF',
     ]
 ];

@@ -50,10 +50,10 @@ class WarehouseService
         foreach ($dataProduct as $key => $value) {
             $product = $warehouse->products()->where('id', $key)->first();
             if (!$product) {
-                return $this->warehouseRepository->createProduct($warehouse, $key, $value);
+                $this->warehouseRepository->createProduct($warehouse, $key, $value);
             } else {
                 $value['quantity'] = $value['quantity'] + $product->pivot->quantity;
-                return $this->warehouseRepository->updateProduct($warehouse, $key, $value);
+                $this->warehouseRepository->updateProduct($warehouse, $key, $value);
             }
         }
     }

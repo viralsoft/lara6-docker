@@ -76,6 +76,19 @@ return [
         'poc_phone' => 'POC Phone',
         'update' => 'Edit Vendor',
         'show' => 'Show Vendor'
-    ]
+    ],
 
+    //Export
+    'export' => [
+        'index' =>'Export',
+        'list' => 'List Export',
+        'create' => 'Export',
+        'product_name' => 'Product Name',
+        'warehouse_name' => 'Warehouse Name',
+        'quantity' => 'Quantity',
+        'date' => 'Date Export',
+        'update' => 'Edit Export',
+        'show' => 'Show Export',
+        'pdf' => 'Generate PDF',
+    ]
 ];

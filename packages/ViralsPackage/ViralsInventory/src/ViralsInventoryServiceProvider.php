@@ -25,6 +25,8 @@ class ViralsInventoryServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/routes/inventory.php');
 
+        $this->loadRoutesFrom(__DIR__.'/routes/inventoryApi.php');
+
         $this->loadViewsFrom(__DIR__.'/resources/views', 'virals-inventory');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'virals-inventory');
@@ -52,5 +54,7 @@ class ViralsInventoryServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/resources/lang' => base_path('resources/lang/vendor/virals-inventory'),
         ], 'lang');
+
+        $this->publishes([__DIR__.'/public' => public_path('vendor/virals')], 'public');
     }
 }
