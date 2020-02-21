@@ -62,7 +62,7 @@
         <li class="{{ Request::is('admin/imports*') ? 'active' : '' }}">
             <a href="{!! route('admin.imports.index') !!}">
                 <i class="livicon" data-name="edit" data-size="18" data-loop="true" data-c="#428BCA" data-hc="#428BCA"></i>
-                {{ __('virals-inventory::labels.import') }}
+                {{ __('virals-inventory::labels.imports') }}
             </a>
         </li>
         <li class="{{ Request::is('admin/exports*') ? 'active' : '' }}">
