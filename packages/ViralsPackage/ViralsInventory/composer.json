@@ -11,7 +11,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "barryvdh/laravel-dompdf": "^0.8.0@dev"
+        "barryvdh/laravel-dompdf": "^0.8.0@dev",
+        "virals-package/virals-base": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "8.0",
