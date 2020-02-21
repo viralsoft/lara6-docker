@@ -51,4 +51,15 @@ class ProductService
     {
         return $this->productRepository->update($data, $id);
     }
+
+    /**
+     * Get product by warehouse
+     *
+     * @param $ware_house
+     * @return
+     */
+    public function getProductByWareHouse($ware_house)
+    {
+        return $this->productRepository->getProductByWareHouse($ware_house);
+    }
 }

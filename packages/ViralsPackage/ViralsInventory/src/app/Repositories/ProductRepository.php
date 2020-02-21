@@ -29,4 +29,17 @@ class ProductRepository extends BaseRepository
     {
         return Product::class;
     }
+
+    /**
+     * Get product by warehouse
+     *
+     * @param $warehouse
+     * @return
+     */
+    public function getProductByWareHouse($warehouse)
+    {
+        return $this->model()::whereHas('warehouses', function ($query) use($warehouse) {
+            $query->where('warehouse_id', $warehouse);
+        })->get();
+    }
 }

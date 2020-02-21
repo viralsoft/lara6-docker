@@ -11,5 +11,10 @@ return [
     'action' => 'Hành động',
     'no_result' => 'Không có kết quả',
     'show' => 'Hiển thị',
-    'result' => 'kết quả'
+    'result' => 'kết quả',
+
+    // Validate
+    'validation' => [
+    'not_enough_product_in_warehouse' => "Không đủ hàng trong kho."
+]
 ];

@@ -83,10 +83,10 @@ class ImportService
         foreach ($data['product_id'] as $key => $value)
         {
             if (array_key_exists($value, $dataImport)) {
-                $quantity = $dataImport[$value]['quantity'] + $data['quantity'][$key];
+                $quantity = $dataImport[$value]['quantity'] + (float)$data['quantity'][$key];
                 $dataImport[$value] = ['quantity' => $quantity];
             } else {
-                $dataImport[$value] = ['quantity' => $data['quantity'][$key]];
+                $dataImport[$value] = ['quantity' => (float)$data['quantity'][$key]];
             }
         }
         return $dataImport;
