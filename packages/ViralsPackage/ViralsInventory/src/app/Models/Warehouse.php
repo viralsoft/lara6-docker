@@ -2,7 +2,7 @@
 
 namespace ViralsPackage\ViralsInventory\app\Models;
 
-use App\User;
+use ViralsPackage\ViralsBase\app\Models\UserViral as User;
 use Illuminate\Database\Eloquent\Model;
 
 class Warehouse extends Model

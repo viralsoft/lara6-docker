@@ -47,4 +47,16 @@ class UnitServiceTest extends TestCase
         ], $unit->id);
         $this->assertNotEquals($unitUpdate->name, $unit->name);
     }
+
+    public function test_find_success_unit()
+    {
+        $service = $this->app->make(UnitService::class);
+        $data = [
+            'name' => $this->faker->name
+        ];
+        $unit = $service->create($data);
+        $unitFind = $service->findOrFail($unit->id);
+        $this->assertInstanceOf(Unit::class, $unitFind);
+        $this->assertEquals($unitFind->id, $unit->id);
+    }
 }
