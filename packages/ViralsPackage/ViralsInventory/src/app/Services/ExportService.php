@@ -34,18 +34,29 @@ class ExportService
         return $this->exportRepository->paginate($perPage);
     }
 
+    public function setupCreateData()
+    {
+        $data = [];
+        $products = $this->productService->all();
+        $products->load('unit');
+        $data['products'] = $products;
+        $data['warehouses'] = $this->warehouseService->all()->pluck('name', 'id')->toArray();
+
+        return $data;
+    }
+
     public function create($data)
     {
         \DB::beginTransaction();
         try {
-            $import = $this->exportRepository->create($data);
+            $export = $this->exportRepository->create($data);
             $dataProduct = $this->getProductAndQuantity($data);
             foreach ($data['product_id'] as $key => $value) {
-                $import->products()->attach($value, ['quantity' => $data['quantity'][$key]]);
+                $export->products()->attach($value, ['quantity' => $data['quantity'][$key]]);
             }
             $this->warehouseService->updateOrCreateProduct($data, $dataProduct);
             \DB::commit();
-            return true;
+            return $export;
         } catch (\Exception $e) {
             \DB::rollback();
             return false;

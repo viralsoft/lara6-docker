@@ -26,7 +26,15 @@ class VendorService
 
     public function create($data)
     {
-        return $this->vendorRepository->create($data);
+        \DB::beginTransaction();
+        try {
+            $vendor = $this->vendorRepository->create($data);
+            \DB::commit();
+            return $vendor;
+        } catch (\Exception $e) {
+            \DB::rollback();
+            return false;
+        }
     }
 
     public function findOrFail($id)
@@ -40,6 +48,14 @@ class VendorService
 
     public function update($data, $id)
     {
-        return $this->vendorRepository->update($data, $id);
+        \DB::beginTransaction();
+        try {
+            $vendor = $this->vendorRepository->update($data, $id);
+            \DB::commit();
+            return $vendor;
+        } catch (\Exception $e) {
+            \DB::rollback();
+            return false;
+        }
     }
 }
