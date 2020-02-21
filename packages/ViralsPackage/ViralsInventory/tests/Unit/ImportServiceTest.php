@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use ViralsPackage\ViralsInventory\app\Models\Import;
 use ViralsPackage\ViralsInventory\app\Services\ImportService;
-use ViralsPackage\ViralsInventory\app\Services\StoreService;
-use ViralsPackage\ViralsInventory\app\Services\UnitService;
-use ViralsPackage\ViralsInventory\app\Services\VendorService;
-use ViralsPackage\ViralsInventory\app\Services\WarehouseService;
+use ViralsPackage\ViralsInventory\app\Models\Product;
+use ViralsPackage\ViralsInventory\app\Models\Store;
+use ViralsPackage\ViralsInventory\app\Models\Unit;
+use ViralsPackage\ViralsInventory\app\Models\Vendor;
+use ViralsPackage\ViralsInventory\app\Models\Warehouse;
 use ViralsPackage\ViralsInventory\Tests\TestCase;
-use ViralsPackage\ViralsInventory\app\Services\ProductService;
 
 class ImportServiceTest extends TestCase
 {
@@ -77,10 +77,17 @@ class ImportServiceTest extends TestCase
         $this->assertEquals($importFind->id,$import->id);
     }
 
+    public function test_set_product_import()
+    {
+        $data = $this->setupData();
+        $serviceImport = $this->app->make(ImportService::class);
+        $dataProduct =$serviceImport->getProductAndQuantity($data);
+        $this->assertTrue(count($data['product_id']) == count($dataProduct));
+    }
+
     private function setupData()
     {
-        $vendorService = $this->app->make(VendorService::class);
-        $vendor = $vendorService->create([
+        $vendor = Vendor::create([
             "name" => $this->faker->name,
             "email" => $this->faker->email,
             "phone" => $this->faker->e164PhoneNumber,
@@ -93,29 +100,23 @@ class ImportServiceTest extends TestCase
             "poc_name" => $this->faker->name,
             "poc_phone" => $this->faker->e164PhoneNumber,
         ]);
-        $storeService = $this->app->make(StoreService::class);
-        $store = $storeService->create([
+        $store = Store::create([
             "name" => $this->faker->name,
             "address" => $this->faker->address,
             "descriptions" => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
             "manager_id" => $this->faker->randomDigitNotNull
         ]);
 
-        $warehouseService = $this->app->make(WarehouseService::class);
-        $warehouse = $warehouseService->create([
+        $warehouse = Warehouse::create([
             "name" => $this->faker->name,
             "address" => $this->faker->address,
             'store_id' => $store->id
         ]);
-        $productService = $this->app->make(ProductService::class);
-
-        $unitService = $this->app->make(UnitService::class);
-
-        $unit = $unitService->create([
+        $unit = Unit::create([
             "name" => $this->faker->name,
         ]);
 
-        $product = $productService->create([
+        $product = Product::create([
             "name" => $this->faker->name,
             "sku" => $this->faker->name,
             'unit_id' => $unit->id
@@ -127,6 +128,7 @@ class ImportServiceTest extends TestCase
             'warehouse_id' => $warehouse->id,
             'date' => date('Y-m-d H:i:s')
         ];
+
         return $data;
     }
 }

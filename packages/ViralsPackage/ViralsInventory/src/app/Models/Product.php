@@ -2,7 +2,7 @@
 
 namespace ViralsPackage\ViralsInventory\app\Models;
 
-use App\User;
+use ViralsPackage\ViralsBase\app\Models\UserViral as User;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -19,5 +19,15 @@ class Product extends Model
     public function warehouses()
     {
         return $this->belongsToMany(Warehouse::class, 'inventories', 'product_id', 'warehouse_id')->withPivot('quantity');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
     }
 }

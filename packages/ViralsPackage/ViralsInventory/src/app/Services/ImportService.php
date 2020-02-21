@@ -77,7 +77,7 @@ class ImportService
         return $data;
     }
 
-    private function getProductAndQuantity($data)
+    public function getProductAndQuantity($data)
     {
         $dataImport = [];
         foreach ($data['product_id'] as $key => $value)

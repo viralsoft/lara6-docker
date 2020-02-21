@@ -3,6 +3,7 @@
 namespace ViralsPackage\ViralsInventory;
 
 use Illuminate\Support\ServiceProvider;
+use ViralsPackage\ViralsInventory\app\Console\Commands\AddSidebarContent;
 
 class ViralsInventoryServiceProvider extends ServiceProvider
 {
@@ -23,6 +24,12 @@ class ViralsInventoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                AddSidebarContent::class,
+            ]);
+        }
+
         $this->loadRoutesFrom(__DIR__.'/routes/inventory.php');
 
         $this->loadRoutesFrom(__DIR__.'/routes/inventoryApi.php');
